@@ -1,6 +1,18 @@
-package com.example.a26341_mynewsapp.ui.theme.models
+package com.example.a26341_mynewsapp.models
 
 import org.json.JSONObject
+import java.net.URLDecoder
+import java.net.URLEncoder
+
+fun String.encodeURL(): String{
+    return URLEncoder.encode(this, "UTF-8")
+}
+
+fun String.decodeURL(): String{
+    return URLDecoder.decode(this, "UTF-8")
+}
+
+
 
 data class Cat(
     val id: String,
@@ -26,6 +38,18 @@ data class Cat(
                 wikipediaUrl = breedObject?.optString("wikipedia_url")
             )
         }
+    }
+
+    fun toJSONString(): String {
+        val jsonObject = JSONObject()
+        jsonObject.put("id", id)
+        jsonObject.put("name", name)
+        jsonObject.put("imageUrl", imageUrl)
+        jsonObject.put("url", url)
+        jsonObject.put("origin", origin)
+        jsonObject.put("temperament", temperament)
+        jsonObject.put("wikipediaUrl", wikipediaUrl)
+        return jsonObject.toString()
     }
 }
 

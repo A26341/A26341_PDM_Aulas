@@ -1,6 +1,6 @@
-package com.example.a26341_mynewsapp
+package com.example.a26341_mynewsapp.ui.api
 
-import com.example.a26341_mynewsapp.ui.theme.models.Cat
+import com.example.a26341_mynewsapp.models.Cat
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONArray

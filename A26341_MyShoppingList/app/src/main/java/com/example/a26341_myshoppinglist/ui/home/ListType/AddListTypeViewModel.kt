@@ -4,6 +4,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.example.a26341_myshoppinglist.models.ListType
 import com.example.a26341_myshoppinglist.repositories.ListTypeRepository
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 
 data class AddListTypeState(
@@ -32,9 +34,11 @@ class AddListTypeViewModel : ViewModel() {
     }
 
     fun addList(){
-        ListTypeRepository.add(listType = ListType("", name, description, null)){
+        val auth = Firebase.auth
 
-        }
+        val currentUser = auth.currentUser
+        ListTypeRepository.add(
+            listType = ListType("", name, description, listOf(currentUser.toString())), onAddListSuccess =  {}
+        )
     }
-
 }

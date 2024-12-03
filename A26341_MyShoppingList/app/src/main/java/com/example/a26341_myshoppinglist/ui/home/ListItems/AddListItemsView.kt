@@ -1,20 +1,14 @@
-package com.example.a26341_myshoppinglist.ui.home.ListType
+package com.example.a26341_myshoppinglist.ui.home.ListItems
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,12 +20,16 @@ import com.example.a26341_myshoppinglist.ui.theme.A26341_MyShoppingListTheme
 
 
 @Composable
-fun AddListTypeView(modifier: Modifier = Modifier,
+fun AddListItemsView(modifier: Modifier = Modifier,
+                     listTypeName: String = "",
+                     listTypeDocId: String = "",
                     navController : NavController = rememberNavController()
 ) {
 
-    val viewModel : AddListTypeViewModel = viewModel()
+    val viewModel : AddListItemsViewModel = viewModel()
     val state = viewModel.state
+    state.value.listName = listTypeName
+    state.value.listDocId = listTypeDocId
 
     Box(
         modifier = modifier.fillMaxSize(),
@@ -39,21 +37,22 @@ fun AddListTypeView(modifier: Modifier = Modifier,
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
-            TextField(value = state.value.name,
-                onValueChange = viewModel::onNameChange,
+            TextField(value = state.value.tipo,
+                onValueChange = viewModel::onTipoChange,
                 placeholder = {
-                    Text(text = "Nome da lista")
+                    Text(text = "Tipo do objecto")
                 }
             )
             Spacer(modifier = Modifier.height(16.dp))
-            TextField(value = state.value.description,
-                onValueChange = viewModel::onDescriptionChange,
+            TextField(value = state.value.objecto,
+                onValueChange = viewModel::onObjectoChange,
                 placeholder = {
-                    Text(text = "Descrição")
+                    Text(text = "Descrição do objecto")
                 }
             )
             Spacer(modifier = Modifier.height(16.dp))
             Button(onClick = {
+
                 viewModel.addList()
                 navController.popBackStack()
             }) {
@@ -69,7 +68,7 @@ fun AddListTypeView(modifier: Modifier = Modifier,
 @Composable
 fun AddListTypeViewPreview() {
     A26341_MyShoppingListTheme {
-        AddListTypeView()
+        AddListItemsView()
     }
 }
 

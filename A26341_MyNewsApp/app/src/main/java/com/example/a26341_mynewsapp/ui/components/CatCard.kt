@@ -1,4 +1,4 @@
-package com.example.a26341_mynewsapp
+package com.example.a26341_mynewsapp.ui.components
 
 import android.content.Intent
 import android.net.Uri
@@ -8,14 +8,12 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,7 +24,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.a26341_mynewsapp.ui.theme.A26341_MyNewsAppTheme
-import com.example.a26341_mynewsapp.ui.theme.models.Cat
+import com.example.a26341_mynewsapp.models.Cat
 import androidx.compose.ui.platform.LocalContext
 import coil.compose.rememberAsyncImagePainter
 
